@@ -3,8 +3,14 @@ declare const _default: any;
 export default _default;
 declare const VDialogComponent_base: any;
 export declare class VDialogComponent extends VDialogComponent_base {
-    ok(): void;
-    cancel(): void;
+    ok(): {
+        confirm: any;
+        text: any;
+    };
+    cancel(): {
+        confirm: any;
+        text: any;
+    };
 }
 export declare const defaultParam: VDialogProgrammaticParam;
 export declare const VDialogProgrammatic: {

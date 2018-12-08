@@ -18,9 +18,21 @@ export default {
 export class VDialogComponent extends Vue.extend(VDialog as Vue) {
     public ok() {
         this.$data.isActive = false;
+
+        const content = this.$refs.vDialogContent as Vue;
+        return {
+            confirm: content.$data.confirm,
+            text: content.$data.text,
+        };
     }
     public cancel() {
         this.$data.isActive = false;
+
+        const content = this.$refs.vDialogContent as Vue;
+        return {
+            confirm: content.$data.confirm,
+            text: content.$data.text,
+        };
     }
 }
 

@@ -54,6 +54,11 @@ this.$vdialog.alert('Hello');
 ```
 
 ```ts
+// title
+this.$vdialog.alert({ title: 'Hi', message: 'Hello' });
+```
+
+```ts
 // wait to push ok button
 await this.$vdialog.alert('Hello').promise;
 ```
@@ -85,4 +90,33 @@ this.$vdialog.confirm({
 // manual close
 const vdialog = await this.$vdialog.confirm('Hello').vdialog;
 vdialog.ok(); // or vdialog.cancel();
+```
+
+### prompt
+```ts
+// promise
+const result = await this.$vdialog.prompt('Hello').promise;
+if (result.confirm) {
+    console.log(result.text);
+}
+```
+
+```ts
+// event handler
+this.$vdialog.prompt({
+    message: 'Hello',
+    onClose: (result) => {
+        if (result.confirm) {
+            console.log(result.text);
+        }
+    },
+});
+```
+
+```ts
+// timeout prompt
+const vdialog = this.$vdialog.prompt('Hello').vdialog;
+await wait(3000);
+const reulst = vdialog.ok();
+console.log(reulst.text);
 ```
