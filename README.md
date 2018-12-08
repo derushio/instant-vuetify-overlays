@@ -120,3 +120,33 @@ await wait(3000);
 const reulst = vdialog.ok();
 console.log(reulst.text);
 ```
+
+### Progress
+* `https://vuetifyjs.com/en/components/progress`
+
+#### Loading
+```ts
+// basic
+await this.$vprogress.circularLoading(async () => {
+    await wait(1000);
+});
+```
+
+#### Timer
+```ts
+// basic
+await this.$vprogress.circularTimer(1000);
+```
+
+#### Progress
+```ts
+// basic (setProgress(percent: number) => void)
+await this.$vprogress.circularProgress(async (setProgress) => {
+    await wait(1000);
+    setProgress(25);
+    await wait(1000);
+    setProgress(90);
+    await wait(1000);
+    setProgress(100);
+});
+```
