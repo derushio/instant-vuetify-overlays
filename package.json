@@ -1,10 +1,13 @@
 {
     "name": "instant-vuetify-overlays",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "",
     "main": "dist/index.bundle.js",
     "types": "types/index.d.ts",
-    "git": "https://github.com/derushio/instant-vuetify-overlays",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/derushio/instant-vuetify-overlays"
+    },
     "scripts": {
         "clean": "./scripts.sh clean",
         "build": "./scripts.sh build",
