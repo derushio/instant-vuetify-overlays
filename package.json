@@ -1,9 +1,10 @@
 {
     "name": "instant-vuetify-overlays",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "",
     "main": "dist/index.bundle.js",
     "types": "types/index.d.ts",
+    "keywords": [ "vue", "vuetify", "snackbar", "dialog", "progress" ],
     "repository": {
         "type": "git",
         "url": "https://github.com/derushio/instant-vuetify-overlays"
