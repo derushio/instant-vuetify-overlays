@@ -1,6 +1,6 @@
 import {
     VDialogComponent, VDialogProgrammaticParam, VDialogProgrammaticResult,
-} from '../../instant-vuetify/components/vdialog/index';
+} from '../components/vdialog/index';
 
 export interface VDialogProgrammatic {
     open: (param: VDialogProgrammaticParam) => VDialogPromise;

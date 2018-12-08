@@ -1,4 +1,4 @@
-import { VSnackbarComponent, VSnackbarProgrammaticParam } from '../../instant-vuetify/components/vsnackbar/index';
+import { VSnackbarComponent, VSnackbarProgrammaticParam } from '../components/vsnackbar/index';
 
 export interface VSnackbarProgrammatic {
     open: (param: VSnackbarProgrammaticParam) => VSnackbarPromise;

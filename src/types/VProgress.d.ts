@@ -1,10 +1,10 @@
 import { VDialogPromise } from './VDialog';
 import {
     VDialogComponent, VDialogProgrammaticParam, VDialogProgrammaticResult,
-} from '../../instant-vuetify/components/vdialog/index';
+} from '../components/vdialog/index';
 import {
     VProgressProgrammaticParam,
-} from '../../instant-vuetify/components/vprogress/index';
+} from '../components/vprogress/index';
 
 export interface VProgressProgrammatic {
     circular: (param?: string | VProgressProgrammaticParam) => VDialogPromise;
