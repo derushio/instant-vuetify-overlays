@@ -69,7 +69,7 @@ const vdialog = await this.$vdialog.alert('Hello').vdialog;
 vdialog.ok();
 ```
 
-### confirm
+#### confirm
 ```ts
 // promise
 const result = await this.$vdialog.confirm('Hello').promise;
@@ -92,7 +92,7 @@ const vdialog = await this.$vdialog.confirm('Hello').vdialog;
 vdialog.ok(); // or vdialog.cancel();
 ```
 
-### prompt
+#### prompt
 ```ts
 // promise
 const result = await this.$vdialog.prompt('Hello').promise;
