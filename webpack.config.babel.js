@@ -6,8 +6,6 @@ import webpack from 'webpack';
 
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
-import nodeExternals from 'webpack-node-externals';
-
 /**
  * Path / File
  */
@@ -27,7 +25,20 @@ const config = {
     entry: {
         index: path.resolve(srcPath, 'index.ts'),
     },
-    externals: [ nodeExternals() ],
+    externals: {
+        vue: {
+            commonjs: 'vue',
+            commonjs2: 'vue',
+            amd: 'vue',
+            root: 'Vue'
+        },
+        vuetify: {
+            commonjs: 'vuetify',
+            commonjs2: 'vuetify',
+            amd: 'vuetify',
+            root: 'Vuetify'
+        },
+    },
 
     output: {
         path: distPath,
@@ -37,7 +48,7 @@ const config = {
     },
 
     resolve: {
-        extensions: [ '.js', '.ts', '.json' ],
+        extensions: [ '.js', '.ts', '.json', '.styl' ],
         alias: {
             '@': path.resolve(srcPath),
         },
@@ -49,6 +60,14 @@ const config = {
                 test: /\.ts$/,
                 use: [ 'ts-loader', 'tslint-loader' ],
             },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ],
+            },
+            {
+                test: /\.styl$/,
+                use: [ 'style-loader', 'css-loader', 'stylus-loader' ],
+            }
         ],
     },
 

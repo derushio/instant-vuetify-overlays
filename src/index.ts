@@ -1,4 +1,3 @@
-import * as externals from 'webpack-node-externals';
 import Vue, { PluginObject } from 'vue';
 import components from './components';
 
