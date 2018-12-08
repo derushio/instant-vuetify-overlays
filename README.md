@@ -47,6 +47,12 @@ vsnackbar.close();
 ### Dialog
 * `https://vuetifyjs.com/en/components/dialogs`
 
+#### open
+```ts
+// open component with card
+await this.$vdialog.open({ component: TestDialog, needCard: true }).promise;
+```
+
 #### alert
 ```ts
 // basic
