@@ -71,7 +71,7 @@ await this.$vdialog.alert('Hello').promise;
 
 ```ts
 // manual close
-const vdialog = await this.$vdialog.alert('Hello').vdialog;
+const vdialog = this.$vdialog.alert('Hello').vdialog;
 vdialog.ok();
 ```
 
@@ -94,7 +94,7 @@ this.$vdialog.confirm({
 
 ```ts
 // manual close
-const vdialog = await this.$vdialog.confirm('Hello').vdialog;
+const vdialog = this.$vdialog.confirm('Hello').vdialog;
 vdialog.ok(); // or vdialog.cancel();
 ```
 
