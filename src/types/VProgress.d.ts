@@ -8,8 +8,8 @@ import {
 
 export interface VProgressProgrammatic {
     circular: (param?: string | VProgressProgrammaticParam) => VDialogPromise;
-    circularLoading: <T>(action: () => T, param?: string | VProgressProgrammaticParam) => Promise<T>;
-    circularProgress: <T>(action: (setProgress: (percent: number) => void) => T,
+    circularLoading: <T>(action: () => T | Promise<T>, param?: string | VProgressProgrammaticParam) => Promise<T>;
+    circularProgress: <T>(action: (setProgress: (percent: number) => void) => T | Promise<T>,
         params?: string | VProgressProgrammaticParam) => Promise<T>;
     circularTimer: <T>(millisec: number,
         params?: string | VProgressProgrammaticParam) => Promise<void>;

@@ -286,7 +286,9 @@ export const VDialogProgrammatic = {
                     '<v-divider></v-divider>' +
                     '<v-card-actions>' +
                         '<v-spacer></v-spacer>' +
-                        '<v-btn color="warning" flat @click="cancel">CANCEL</v-btn>' +
+                        ((!propsData.persistent)
+                            ? '<v-btn color="warning" flat @click="cancel">CANCEL</v-btn>'
+                            : '') +
                         '<v-btn color="primary" flat @click="ok">OK</v-btn>' +
                     '</v-card-actions>' +
                 '</v-card>',

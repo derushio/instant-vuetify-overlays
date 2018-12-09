@@ -1,5 +1,6 @@
 import Vue, { PluginObject } from 'vue';
 import { registerComponentProgrammatic } from '../../utils/plugin';
+import { aswait } from '@/utils/AsyncTimeout';
 
 export default {
     install(MyVue: typeof Vue) {
@@ -9,6 +10,7 @@ export default {
 
 export const defaultParam = {
     timeout: 0,
+    minTime: 0,
     onClose: (result: VProgressProgrammaticResult) => null,
 } as VProgressProgrammaticParam;
 
@@ -43,23 +45,31 @@ export const VProgressProgrammatic = {
     },
     // tslint:disable-next-line:object-literal-shorthand
     circularLoading: async function<T>(this: Vue,
-            action: () => T, params?: string | VProgressProgrammaticParam) {
-        const circular = this.$vprogress.circular(params);
+            action: () => T | Promise<T>, params?: string | VProgressProgrammaticParam) {
+        // TODO: メッセージ対応
+        const propsData = (typeof params === String.name.toLowerCase())
+            ? Object.assign({}, defaultParam, { message: params })
+            : Object.assign({}, defaultParam, params);
+        const circular = this.$vprogress.circular(propsData);
 
+        const tasks = [ action() ] as Array<Promise<T | void>>;
+        // 最低時間設定
+        tasks.push(aswait(propsData.minTime!));
         try {
-            const result = await action();
+            const [ result ] = await Promise.all(tasks);
             circular.vdialog.ok();
             return result;
         } catch (e) {
+            // 最低時間を待つ
+            await tasks[1];
             circular.vdialog.cancel();
             throw e;
         }
     },
     // tslint:disable-next-line:object-literal-shorthand
     circularProgress: async function<T>(this: Vue,
-            action: (setProgress: (percent: number) => void) => T,
+            action: (setProgress: (percent: number) => void) => T | Promise<T>,
             params?: string | VProgressProgrammaticParam) {
-
         // TODO: メッセージ対応
         const propsData = (typeof params === String.name.toLowerCase())
             ? Object.assign({}, defaultParam, { message: params })
@@ -135,6 +145,7 @@ export const VProgressProgrammatic = {
 
 export interface VProgressProgrammaticParam {
     timeout?: number;
+    minTime?: number;
     onClose?: (result: VProgressProgrammaticResult) => any;
 }
 

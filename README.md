@@ -108,6 +108,15 @@ if (result.confirm) {
 ```
 
 ```ts
+// no cancel
+const result = await this.$vdialog.prompt({
+    message: 'Hello',
+    persistent: true,
+}).promise;
+console.log(result.text);
+```
+
+```ts
 // event handler
 this.$vdialog.prompt({
     message: 'Hello',
@@ -136,6 +145,13 @@ console.log(reulst.text);
 await this.$vprogress.circularLoading(async () => {
     await wait(1000);
 });
+```
+
+```ts
+// min time
+await this.$vprogress.circularLoading(async () => {
+    await wait(1000);
+}, { minTime: 1000 });
 ```
 
 #### Timer
