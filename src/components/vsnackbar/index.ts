@@ -50,7 +50,10 @@ export const VSnackbarProgrammatic = {
 
                 // tslint:disable-next-line:object-literal-shorthand
                 mounted: function(this: Vue) {
-                    this.$parent.$emit('close');
+                    // tslint:disable-next-line:object-literal-shorthand
+                    this.$on('close', function(this: Vue) {
+                        this.$parent.$emit('close');
+                    });
                 },
             });
 
