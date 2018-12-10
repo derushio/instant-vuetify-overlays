@@ -44,8 +44,13 @@ export const VSnackbarProgrammatic = {
                 methods: {
                     // tslint:disable-next-line:object-literal-shorthand
                     close: function(this: Vue) {
-                        this.$parent.$emit('close');
+                        this.$emit('close');
                     },
+                },
+
+                // tslint:disable-next-line:object-literal-shorthand
+                mounted: function(this: Vue) {
+                    this.$parent.$emit('close');
                 },
             });
 

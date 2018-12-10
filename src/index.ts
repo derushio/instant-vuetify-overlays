@@ -12,4 +12,4 @@ export default {
     },
 } as PluginObject<{}>;
 
-export { VSnackbarComponent, VDialogComponent }
+export { VSnackbarComponent, VDialogComponent };

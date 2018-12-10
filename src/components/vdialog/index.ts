@@ -83,15 +83,11 @@ export const VDialogProgrammatic = {
                 methods: {
                     // tslint:disable-next-line:object-literal-shorthand
                     ok: function(this: Vue) {
-                        // Dialogは二重に親がいる
-                        this.$data.confirm = true;
-                        this.$parent.$parent.$emit('ok');
+                        this.$emit('ok');
                     },
                     // tslint:disable-next-line:object-literal-shorthand
                     cancel: function(this: Vue) {
-                        // Dialogは二重に親がいる
-                        this.$data.confirm = false;
-                        this.$parent.$parent.$emit('cancel');
+                        this.$emit('cancel');
                     },
                 },
                 props: {
@@ -107,6 +103,19 @@ export const VDialogProgrammatic = {
                     for (const key of Object.keys(propsData.onEvents!)) {
                         this.$on(key, propsData.onEvents![key]);
                     }
+
+                    // tslint:disable-next-line:object-literal-shorthand
+                    this.$on('ok', function(this: Vue) {
+                        // Dialogは二重に親がいる
+                        this.$data.confirm = true;
+                        this.$parent.$parent.$emit('ok');
+                    });
+                    // tslint:disable-next-line:object-literal-shorthand
+                    this.$on('cancel', function(this: Vue) {
+                        // Dialogは二重に親がいる
+                        this.$data.confirm = false;
+                        this.$parent.$parent.$emit('cancel');
+                    });
                 },
             });
 
