@@ -12,4 +12,8 @@ export default {
     },
 } as PluginObject<{}>;
 
+<<<<<<< HEAD
 export { VSnackbarComponent, VDialogComponent };
+=======
+export { VSnackbarComponent, VDialogComponent }
+>>>>>>> 012d220d42b8645a780a7e4586c2f98d96ec0c55
