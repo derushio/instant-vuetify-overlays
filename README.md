@@ -53,6 +53,17 @@ vsnackbar.close();
 await this.$vdialog.open({ component: TestDialog, needCard: true }).promise;
 ```
 
+```ts
+@Component
+export default class TestDialog extends Vue {
+    protected update() {
+        this.dispatch('updateSomething');
+        // emit close
+        this.$emit('ok');
+    }
+}
+```
+
 #### alert
 ```ts
 // basic
