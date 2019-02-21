@@ -24,7 +24,6 @@ function production_build() {
     rm -rf './node_modules'
     export NODE_ENV=production
     yarn install --production=false
-    rm -rf './node_modules/vue'
     build
 }
 

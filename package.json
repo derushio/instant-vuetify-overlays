@@ -4,6 +4,11 @@
     "description": "",
     "main": "dist/index.bundle.js",
     "types": "types/index.d.ts",
+    "files": [
+        "dist",
+        "src",
+        "types/*.d.ts"
+    ],
     "keywords": [
         "vue",
         "vuetify",
@@ -26,9 +31,6 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "stylus": "^0.54.5",
-        "typescript": "^3.3.3",
-        "vue": "2.6.6",
         "vuetify": "^1.5.2"
     },
     "devDependencies": {
@@ -42,13 +44,20 @@
         "source-map-support": "^0.5.10",
         "style-loader": "^0.23.1",
         "stylus-loader": "^3.0.2",
+        "stylus": "^0.54.5",
         "ts-loader": "^5.3.3",
         "tslint-loader": "^3.6.0",
         "tslint": "^5.12.1",
         "typedoc": "^0.14.2",
+        "typescript": "^3.3.3",
         "uglifyjs-webpack-plugin": "^2.1.1",
+        "vue": "2.6.6",
         "webpack-cli": "^3.2.3",
         "webpack-node-externals": "^1.7.2",
         "webpack": "^4.29.5"
+    },
+    "peerDependencies": {
+        "vue": "2.6.6",
+        "vuetify": "^1.5.2"
     }
 }
