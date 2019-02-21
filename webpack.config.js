@@ -1,10 +1,16 @@
-import dotenv from 'dotenv';
-dotenv.config();
+const dotenv = require('dotenv');
+const env = Object.assign({},
+    dotenv.config({ path: '.env' }).parsed || {},
+    dotenv.config({ path: '.env.local' }).parsed || {});
+env.NODE_ENV = (env.NODE_ENV === 'production')
+    ? env.NODE_ENV
+    : process.env.NODE_ENV;
+console.log('NODE_ENV:', env.NODE_ENV);
 
-import path from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+const nodeExternals = require('webpack-node-externals');
 
 /**
  * Path / File
@@ -13,12 +19,12 @@ const contextPath = path.resolve(__dirname, './');
 const distPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 
-const isProduct = process.env.NODE_ENV == 'production';
+const isProduct = env.NODE_ENV == 'production';
 
 /**
  * Webpack Config
  */
-const config = {
+module.exports = {
     mode: process.env.NODE_ENV,
 
     context: contextPath,
@@ -79,21 +85,5 @@ const config = {
         }),
     ],
 
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                sourceMap: !isProduct,
-                uglifyOptions: {
-                    ecma: 8,
-                    compress: {
-                        warnings: false,
-                    },
-                },
-            }),
-        ],
-    },
-
     devtool: isProduct? false: '#source-map',
 };
-
-export default config;
