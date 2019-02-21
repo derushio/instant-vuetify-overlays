@@ -16,14 +16,14 @@ function build() {
 
 function development_build() {
     export NODE_ENV=development
-    yarn install
+    yarn install --production=false
     build
 }
 
 function production_build() {
     rm -rf './node_modules'
     export NODE_ENV=production
-    yarn install
+    yarn install --production=false
     rm -rf './node_modules/vue'
     build
 }
