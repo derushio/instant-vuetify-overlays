@@ -1,12 +1,30 @@
 #!/bin/bash -eu
 
 function clean() {
-    $(npm bin)/rimraf './dist/*'
+    rm -rf './dist'
+    rm -rf './types'
+
+    mkdir './dist'
+    mkdir './types'
 }
 
 function build() {
     clean && $(npm bin)/webpack || true
+    cp -R "./src/types" "./types/types"
     echo "import '../src/types'" >> './types/index.d.ts'
+}
+
+function development_build() {
+    export NODE_ENV=development
+    yarn install
+    build
+}
+
+function production_build() {
+    rm -rf './node_modules'
+    export NODE_ENV=production
+    yarn install
+    build
 }
 
 function dev() {

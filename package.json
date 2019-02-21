@@ -1,6 +1,6 @@
 {
     "name": "instant-vuetify-overlays",
-    "version": "1.4.3",
+    "version": "1.5.0",
     "description": "",
     "main": "dist/index.bundle.js",
     "types": "types/index.d.ts",
@@ -18,22 +18,14 @@
     "scripts": {
         "clean": "./scripts.sh clean",
         "build": "./scripts.sh build",
-        "dev": "./scripts.sh dev",
+        "production_build": "./scripts.sh production_build",
+        "development_build": "./scripts.sh development_build",
         "build_typedoc": "./scripts.sh build_typedoc project",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "MIT",
-    "peerDependencies": {
-        "vue": "2.6.6"
-    },
     "dependencies": {
-        "rimraf": "^2.6.3",
-        "stylus": "^0.54.5",
-        "typescript": "^3.3.3",
-        "vuetify": "^1.5.2"
-    },
-    "devDependencies": {
         "@types/webpack-node-externals": "^1.6.3",
         "babel-cli": "^7.0.0-beta.3",
         "babel-core": "^7.0.0-beta.3",
@@ -44,13 +36,23 @@
         "source-map-support": "^0.5.10",
         "style-loader": "^0.23.1",
         "stylus-loader": "^3.0.2",
+        "stylus": "^0.54.5",
         "ts-loader": "^5.3.3",
-        "tslint": "^5.12.1",
         "tslint-loader": "^3.6.0",
+        "tslint": "^5.12.1",
         "typedoc": "^0.14.2",
+        "typescript": "^3.3.3",
         "uglifyjs-webpack-plugin": "^2.1.1",
-        "webpack": "^4.29.5",
         "webpack-cli": "^3.2.3",
-        "webpack-node-externals": "^1.7.2"
+        "webpack-node-externals": "^1.7.2",
+        "webpack": "^4.29.5"
+    },
+    "devDependencies": {
+        "vue": "2.6.6",
+        "vuetify": "^1.5.2"
+    },
+    "peerDependencies": {
+        "vue": "2.6.6",
+        "vuetify": "^1.5.2"
     }
 }
