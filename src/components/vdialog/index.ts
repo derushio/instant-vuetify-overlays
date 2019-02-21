@@ -17,21 +17,31 @@ export default {
 
 export class VDialogComponent extends Vue.extend(VDialog as Vue) {
     public ok() {
-        this.$data.isActive = false;
+        if (this.$data.isActive) {
+            this.$data.isActive = false;
 
-        const content = this.$refs.vDialogContent as Vue;
+            // 閉じた後にokを押されたときの考慮
+            const content = this.$refs.vDialogContent as Vue;
+            this.$data.confirm = content.$data.confirm;
+            this.$data.text = content.$data.text;
+        }
         return {
-            confirm: content.$data.confirm,
-            text: content.$data.text,
+            confirm: this.$data.confirm,
+            text: this.$data.text,
         };
     }
     public cancel() {
-        this.$data.isActive = false;
+        if (this.$data.isActive) {
+            this.$data.isActive = false;
 
-        const content = this.$refs.vDialogContent as Vue;
+            // 閉じた後にcancelを押されたときの考慮
+            const content = this.$refs.vDialogContent as Vue;
+            this.$data.confirm = content.$data.confirm;
+            this.$data.text = content.$data.text;
+        }
         return {
-            confirm: content.$data.confirm,
-            text: content.$data.text,
+            confirm: this.$data.confirm,
+            text: this.$data.text,
         };
     }
 }
