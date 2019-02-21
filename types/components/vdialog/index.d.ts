@@ -14,13 +14,18 @@ export declare class VDialogComponent extends VDialogComponent_base {
 }
 export declare const defaultParam: VDialogProgrammaticParam;
 export declare const VDialogProgrammatic: {
-    open: (this: Vue, params: VDialogProgrammaticParam) => {
+    open: (this: Vue, params: VDialogProgrammaticParam) => Promise<{}> & {
         vdialog: VDialogComponent | null;
-        promise: Promise<{}>;
     };
-    alert: (this: Vue, params: string | VDialogProgrammaticParam) => import("../../types/VDialog").VDialogPromise;
-    confirm: (this: Vue, params: string | VDialogProgrammaticParam) => import("../../types/VDialog").VDialogPromise;
-    prompt: (this: Vue, params: string | VDialogProgrammaticParam) => import("../../types/VDialog").VDialogPromise;
+    alert: (this: Vue, params: string | VDialogProgrammaticParam) => {
+        vdialog: VDialogComponent;
+    } & Promise<VDialogProgrammaticResult>;
+    confirm: (this: Vue, params: string | VDialogProgrammaticParam) => {
+        vdialog: VDialogComponent;
+    } & Promise<VDialogProgrammaticResult>;
+    prompt: (this: Vue, params: string | VDialogProgrammaticParam) => {
+        vdialog: VDialogComponent;
+    } & Promise<VDialogProgrammaticResult>;
 };
 export interface VDialogProgrammaticParam {
     component?: typeof Vue;

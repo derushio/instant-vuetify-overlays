@@ -106,15 +106,29 @@ export const VDialogProgrammatic = {
 
                     // tslint:disable-next-line:object-literal-shorthand
                     this.$on('ok', function(this: Vue) {
-                        // Dialogは二重に親がいる
                         this.$data.confirm = true;
-                        this.$parent.$parent.$emit('ok');
+                        let self = this;
+                        // 親を探す
+                        for (let i = 0; i < 3; i++) {
+                            if (self.$parent instanceof VDialogComponent) {
+                                self.$parent.$emit('ok');
+                            } else {
+                                self = self.$parent;
+                            }
+                        }
                     });
                     // tslint:disable-next-line:object-literal-shorthand
                     this.$on('cancel', function(this: Vue) {
-                        // Dialogは二重に親がいる
                         this.$data.confirm = false;
-                        this.$parent.$parent.$emit('cancel');
+                        let self = this;
+                        // 親を探す
+                        for (let i = 0; i < 3; i++) {
+                            if (self.$parent instanceof VDialogComponent) {
+                                self.$parent.$emit('cancel');
+                            } else {
+                                self = self.$parent;
+                            }
+                        }
                     });
                 },
             });
@@ -201,7 +215,8 @@ export const VDialogProgrammatic = {
             vdialog.$data.isActive = true;
         });
 
-        return { vdialog, promise };
+        // promiseにcomponentのパラメータを付与
+        return Object.assign(promise, { vdialog });
     },
 
     // tslint:disable-next-line:object-literal-shorthand

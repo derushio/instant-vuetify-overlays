@@ -25,7 +25,7 @@ export const VSnackbarProgrammatic = {
     // tslint:disable-next-line:object-literal-shorthand
     open: function(this: Vue, params: VSnackbarProgrammaticParam) {
         let vsnackbar = null as VSnackbarComponent | null;
-        const promise = new Promise((resolve, reject) => {
+        const promise = new Promise<void>((resolve, reject) => {
             const propsData = Object.assign({}, defaultParam, params);
 
             // add element
@@ -107,7 +107,8 @@ export const VSnackbarProgrammatic = {
             vsnackbar.$data.isActive = true;
         });
 
-        return { vsnackbar, promise };
+        // promiseにcomponentのパラメータを付与
+        return Object.assign(promise, { vsnackbar });
     },
 
     // tslint:disable-next-line:object-literal-shorthand

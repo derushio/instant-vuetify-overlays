@@ -35,7 +35,7 @@ this.$vsnackbar.alert({ message: 'Hello', timeout: 500 });
 
 ```ts
 // wait to push ok button
-await this.$vsnackbar.alert({ message: 'Hello', timeout: 0 }).promise;
+await this.$vsnackbar.alert({ message: 'Hello', timeout: 0 });
 ```
 
 ```ts
@@ -50,16 +50,17 @@ vsnackbar.close();
 #### open
 ```ts
 // open component with card
-await this.$vdialog.open({ component: TestDialog, needCard: true }).promise;
+await this.$vdialog.open({ component: TestDialog, needCard: true });
 ```
 
 ```ts
+import { Vue, Component } from 'vue-property-decorator';
+
 @Component
 export default class TestDialog extends Vue {
-    protected update() {
-        this.dispatch('updateSomething');
-        // emit close
+    protected onClick() {
         this.$emit('ok');
+        // or this.$emit('cancel');
     }
 }
 ```
@@ -77,7 +78,7 @@ this.$vdialog.alert({ title: 'Hi', message: 'Hello' });
 
 ```ts
 // wait to push ok button
-await this.$vdialog.alert('Hello').promise;
+await this.$vdialog.alert('Hello');
 ```
 
 ```ts
@@ -89,7 +90,7 @@ vdialog.ok();
 #### confirm
 ```ts
 // promise
-const result = await this.$vdialog.confirm('Hello').promise;
+const result = await this.$vdialog.confirm('Hello');
 console.log(result.confirm);
 ```
 
@@ -112,7 +113,7 @@ vdialog.ok(); // or vdialog.cancel();
 #### prompt
 ```ts
 // promise
-const result = await this.$vdialog.prompt('Hello').promise;
+const result = await this.$vdialog.prompt('Hello');
 if (result.confirm) {
     console.log(result.text);
 }
@@ -123,7 +124,7 @@ if (result.confirm) {
 const result = await this.$vdialog.prompt({
     message: 'Hello',
     persistent: true,
-}).promise;
+});
 console.log(result.text);
 ```
 
@@ -143,14 +144,21 @@ this.$vdialog.prompt({
 // timeout prompt
 const vdialog = this.$vdialog.prompt('Hello').vdialog;
 await wait(3000);
-const reulst = vdialog.ok();
-console.log(reulst.text);
+const result = vdialog.ok();
+console.log(result.text);
 ```
 
 ### Progress
 * `https://vuetifyjs.com/en/components/progress`
 
 #### Loading
+```ts
+// basic
+const vdialog = await this.$vprogress.circular().vdialog;
+await wait(1000);
+vdialog.ok();
+```
+
 ```ts
 // basic
 await this.$vprogress.circularLoading(async () => {
@@ -161,7 +169,7 @@ await this.$vprogress.circularLoading(async () => {
 ```ts
 // min time
 await this.$vprogress.circularLoading(async () => {
-    await wait(1000);
+    await wait(500);
 }, { minTime: 1000 });
 ```
 

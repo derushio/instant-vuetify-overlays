@@ -7,11 +7,12 @@ export declare class VSnackbarComponent extends VSnackbarComponent_base {
 }
 export declare const defaultParam: VSnackbarProgrammaticParam;
 export declare const VSnackbarProgrammatic: {
-    open: (this: Vue, params: VSnackbarProgrammaticParam) => {
+    open: (this: Vue, params: VSnackbarProgrammaticParam) => Promise<void> & {
         vsnackbar: VSnackbarComponent | null;
-        promise: Promise<{}>;
     };
-    alert: (this: Vue, params: string | VSnackbarProgrammaticParam) => import("../../types/VSnackbar").VSnackbarPromise;
+    alert: (this: Vue, params: string | VSnackbarProgrammaticParam) => {
+        vsnackbar: VSnackbarComponent;
+    } & Promise<void>;
 };
 export interface VSnackbarProgrammaticParam {
     left?: boolean;

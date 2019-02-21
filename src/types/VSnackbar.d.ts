@@ -1,11 +1,6 @@
 import { VSnackbarComponent, VSnackbarProgrammaticParam } from '../components/vsnackbar/index';
 
 export interface VSnackbarProgrammatic {
-    open: (param: VSnackbarProgrammaticParam) => VSnackbarPromise;
-    alert: (message: string | VSnackbarProgrammaticParam) => VSnackbarPromise;
-}
-
-export interface VSnackbarPromise {
-    vsnackbar: VSnackbarComponent;
-    promise: Promise<void>;
+    open: (param: VSnackbarProgrammaticParam) => { vsnackbar: VSnackbarComponent } & Promise<void>;
+    alert: (message: string | VSnackbarProgrammaticParam) => { vsnackbar: VSnackbarComponent } & Promise<void>;
 }

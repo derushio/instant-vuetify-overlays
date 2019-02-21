@@ -3,10 +3,10 @@ import {
 } from '../components/vdialog/index';
 
 export interface VDialogProgrammatic {
-    open: (param: VDialogProgrammaticParam) => VDialogPromise;
-    alert: (message: string | VDialogProgrammaticParam) => VDialogPromise;
-    confirm: (message: string | VDialogProgrammaticParam) => VDialogPromise;
-    prompt: (message: string | VDialogProgrammaticParam) => VDialogPromise;
+    open: (param: VDialogProgrammaticParam) => { vdialog: VDialogComponent } & Promise<VDialogProgrammaticResult>;
+    alert: (message: string | VDialogProgrammaticParam) => { vdialog: VDialogComponent } & Promise<VDialogProgrammaticResult>;
+    confirm: (message: string | VDialogProgrammaticParam) => { vdialog: VDialogComponent } & Promise<VDialogProgrammaticResult>;
+    prompt: (message: string | VDialogProgrammaticParam) => { vdialog: VDialogComponent } & Promise<VDialogProgrammaticResult>;
 }
 
 export interface VDialogPromise {
