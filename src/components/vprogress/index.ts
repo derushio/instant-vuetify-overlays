@@ -1,6 +1,6 @@
 import Vue, { PluginObject } from 'vue';
 import { registerComponentProgrammatic } from '../../utils/plugin';
-import { aswait } from '@/utils/AsyncTimeout';
+import { aswait } from '../../utils/AsyncTimeout';
 
 export default {
     install(MyVue: typeof Vue) {
